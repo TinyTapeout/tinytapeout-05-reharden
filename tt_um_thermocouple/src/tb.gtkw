@@ -1,0 +1,65 @@
+[*]
+[*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
+[*] Sat Nov  4 05:11:10 2023
+[*]
+[dumpfile] "/home/amedcalf/projects/tt05-thermocouple/src/tb.vcd"
+[dumpfile_mtime] "Sat Nov  4 05:08:49 2023"
+[dumpfile_size] 40491
+[savefile] "/home/amedcalf/projects/tt05-thermocouple/src/tb.gtkw"
+[timestart] 0
+[size] 1388 808
+[pos] -1 -1
+*-23.748837 40800001 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb.
+[treeopen] tb.tt_um_thermocouple.
+[sst_width] 297
+[signals_width] 174
+[sst_expanded] 1
+[sst_vpaned_height] 230
+@28
+tb.clk
+tb.rst_n
+tb.ena
+@200
+-
+@28
+tb.spi_sce
+tb.spi_sck
+tb.spi_sin
+tb.spi_sout
+tb.tt_um_thermocouple.spi_slave.last_cycle
+tb.tt_um_thermocouple.spi_slave.o_wstb
+@22
+tb.tt_um_thermocouple.spi_slave.cnt[3:0]
+tb.tt_um_thermocouple.spi_slave.o_wout[15:0]
+@200
+-
+@28
+tb.adc_sce
+tb.adc_sck
+tb.adc_sin
+tb.adc_sout
+@24
+tb.tt_um_thermocouple.spi_master.cnt[31:0]
+@200
+-
+@22
+tb.tt_um_thermocouple.current_temp[19:0]
+tb.tt_um_thermocouple.out_temp[15:0]
+@28
+tb.tt_um_thermocouple.state
+tb.tt_um_thermocouple.spi_stb
+@22
+tb.tt_um_thermocouple.spi_word[15:0]
+tb.tt_um_thermocouple.adc_word[15:0]
+@200
+-
+@28
+tb.tt_um_thermocouple.tc_calc.i_start
+@22
+tb.tt_um_thermocouple.tc_calc.i_code[9:0]
+tb.tt_um_thermocouple.tc_calc.state[1:0]
+@29
+tb.tt_um_thermocouple.cfg
+[pattern_trace] 1
+[pattern_trace] 0

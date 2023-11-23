@@ -1,0 +1,16 @@
+.DS_Store
+.idea
+.vscode
+*.vcd
+runs
+src/sim_build
+src/__pycache__/
+src/__tinytapeout
+src/results.xml
+src/user_config.tcl
+fpga
+sim
+pcb
+gds
+gds_logs
+gl

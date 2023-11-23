@@ -1,0 +1,12 @@
+.DS_Store
+.idea
+.vscode
+*.vcd
+*.fst
+runs
+src/sim_build
+src/__pycache__/
+src/__tinytapeout
+src/results.xml
+src/user_config.tcl
+venv_ticktocktokens

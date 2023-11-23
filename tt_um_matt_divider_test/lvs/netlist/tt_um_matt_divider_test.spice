@@ -1,0 +1,43 @@
+* NGSPICE file created from tt_um_matt_divider_test.ext - technology: sky130A
+
+.subckt sky130_fd_pr__cap_mim_m3_1_W3TTNJ m3_n4492_n6360# m3_120_n6360# c1_n4452_n6320#
++ c1_160_n6320#
+X0 c1_160_n6320# m3_120_n6360# sky130_fd_pr__cap_mim_m3_1 l=2e+07u w=2e+07u
+X1 c1_n4452_n6320# m3_n4492_n6360# sky130_fd_pr__cap_mim_m3_1 l=2e+07u w=2e+07u
+X2 c1_n4452_n6320# m3_n4492_n6360# sky130_fd_pr__cap_mim_m3_1 l=2e+07u w=2e+07u
+X3 c1_160_n6320# m3_120_n6360# sky130_fd_pr__cap_mim_m3_1 l=2e+07u w=2e+07u
+X4 c1_n4452_n6320# m3_n4492_n6360# sky130_fd_pr__cap_mim_m3_1 l=2e+07u w=2e+07u
+X5 c1_160_n6320# m3_120_n6360# sky130_fd_pr__cap_mim_m3_1 l=2e+07u w=2e+07u
+.ends
+
+.subckt cap b a
+Xsky130_fd_pr__cap_mim_m3_1_W3TTNJ_0 a a b b sky130_fd_pr__cap_mim_m3_1_W3TTNJ
+.ends
+
+.subckt sky130_fd_pr__res_generic_m4_RPNQRH m4_n30_n87# m4_n30_30#
+R0 m4_n30_n87# m4_n30_30# sky130_fd_pr__res_generic_m4 w=300000u l=300000u
+.ends
+
+.subckt sky130_fd_pr__res_generic_po_D4RDDB a_n87_165# a_21_165# a_n195_165# a_129_n595#
++ a_129_165# a_n195_n595# a_n87_n595# a_21_n595#
+R0 a_n87_n595# a_n87_165# sky130_fd_pr__res_generic_po w=330000u l=1.65e+06u
+R1 a_21_n595# a_21_165# sky130_fd_pr__res_generic_po w=330000u l=1.65e+06u
+R2 a_129_n595# a_129_165# sky130_fd_pr__res_generic_po w=330000u l=1.65e+06u
+R3 a_n195_n595# a_n195_165# sky130_fd_pr__res_generic_po w=330000u l=1.65e+06u
+.ends
+
+.subckt divider 5 4 3 2 1
+Xsky130_fd_pr__res_generic_po_D4RDDB_0 2 4 2 5 4 1 3 3 sky130_fd_pr__res_generic_po_D4RDDB
+.ends
+
+.subckt tt_um_matt_divider_test clk ena rst_n ui_in[0] ui_in[1] ui_in[2] ui_in[3]
++ ui_in[4] ui_in[5] ui_in[6] ui_in[7] uio_in[0] uio_in[1] uio_in[2] uio_in[3] uio_in[4]
++ uio_in[5] uio_in[6] uio_in[7] uio_oe[0] uio_oe[1] uio_oe[2] uio_oe[3] uio_oe[4]
++ uio_oe[5] uio_oe[6] uio_oe[7] uio_out[0] uio_out[1] uio_out[2] uio_out[3] uio_out[4]
++ uio_out[5] uio_out[6] uio_out[7] uo_out[0] uo_out[1] uo_out[2] uo_out[3] uo_out[4]
++ uo_out[5] uo_out[6] uo_out[7] VPWR VGND
+Xcap_0 VGND ui_in[0] cap
+Xsky130_fd_pr__res_generic_m4_RPNQRH_0 ui_in[0] uo_out[3] sky130_fd_pr__res_generic_m4_RPNQRH
+Xdivider_1 VGND uo_out[0] uo_out[1] uo_out[2] VPWR divider
+.ends
+

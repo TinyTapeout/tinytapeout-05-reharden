@@ -1,0 +1,22 @@
+magic
+tech sky130A
+timestamp 1698610993
+<< metal4 >>
+rect 1923 2702 4410 2791
+rect 1923 2658 4432 2702
+rect 1912 2537 4432 2658
+rect 730 -4238 951 2127
+rect 1912 -4039 2133 2537
+rect 2973 -4238 3194 2161
+rect 4211 -3995 4432 2537
+rect 730 -4525 3194 -4238
+rect 730 -4570 951 -4525
+rect 2973 -4536 3194 -4525
+use sky130_fd_pr__cap_mim_m3_1_W3TTNJ  sky130_fd_pr__cap_mim_m3_1_W3TTNJ_0
+timestamp 1698610993
+transform 1 0 2087 0 1 -841
+box -2246 -3240 2246 3240
+<< labels >>
+rlabel metal4 1923 2537 4410 2791 1 a
+rlabel metal4 730 -4525 3194 -4238 1 b
+<< end >>
