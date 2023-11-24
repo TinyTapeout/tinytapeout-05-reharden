@@ -123,7 +123,6 @@ jobs:
           - tt_um_urish_ringosc_cnt
           - tt_um_urish_silife
           - tt_um_urish_silife_max
-          - tt_um_urish_simon
           - tt_um_uwuifier
           - tt_um_vga_clock
           - tt_um_wokwi_376553022662786049
