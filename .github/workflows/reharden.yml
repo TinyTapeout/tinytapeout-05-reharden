@@ -10,172 +10,13 @@ jobs:
       fail-fast: false
       matrix:
         project:
-          - tt_um_4_bit_pipeline_multiplier
-          - tt_um_7segx4_clock_abhishek_top
-          - tt_um_BNNNeuron
-          - tt_um_EventFilter
-          - tt_um_Fiona_CMU
-          - tt_um_GrayCounter_ariz207
-          - tt_um_LSNN
-          - tt_um_Leaky_Integrate_Fire_nfjesifb
-          - tt_um_MichaelBell_spi_peri
-          - tt_um_SNN
-          - tt_um_adaptive_lif
-          - tt_um_algofoogle_vga_spi_rom
-          - tt_um_alu_chip
-          - tt_um_asinghani_tinyscanchain_tt05
-          - tt_um_async_proc_paulschulz
-          - tt_um_blink
-          - tt_um_btflv_8bit_fp_adder
-          - tt_um_carlosgs99_cro_udg
-          - tt_um_cejmu
-          - tt_um_chatgpt_snn_mtomlin5
-          - tt_um_chip_inventor_music__6_bit_count
-          - tt_um_clkdiv
-          - tt_um_czlucius_alu
-          - tt_um_devinatkin_stopwatch
-          - tt_um_diadatp_spigot_e
-          - tt_um_digital_clock_sellicott
-          - tt_um_dinogame
-          - tt_um_dlmiles_tt05_i2c_bert
           - tt_um_factory_test
-          - tt_um_flappy_vga_cutout1
-          - tt_um_freq_hcohensa
-          - tt_um_frequency_counter
-          - tt_um_gchenfc_seven_segment_gerry
-          - tt_um_gfg_development_tros
-          - tt_um_gharenthi_top
-          - tt_um_hadirkhan10_lif_neuron
-          - tt_um_hh
-          - tt_um_himanshu5_prog_chipTop
-          - tt_um_hls_lfi
-          - tt_um_hodgkin_huxley
-          - tt_um_if
-          - tt_um_ja1tye_sound_generator
-          - tt_um_jaylennee_wta_pwm
-          - tt_um_jeffdi_seven_segment_seconds
-          - tt_um_jkprz
-          - tt_um_jleugeri_ticktocktokens
-          - tt_um_jmadden173_delta_modulation
-          - tt_um_joerdsonsilva_top
-          - tt_um_kianV_rv32ima_uLinux_SoC
-          - tt_um_ks_pyamnihc
-          - tt_um_kskyou
-          - tt_um_lif
-          - tt_um_lif_n
-          - tt_um_loopback
-          - tt_um_loopback_ericsmi
-          - tt_um_mabhari_seven_segment_seconds
-          - tt_um_manjushettar
-          - tt_um_matrix_multiplier
-          - tt_um_mattngaw_fp8
-          - tt_um_meriac_play_tune
-          - tt_um_mihailocode_neural_network
-          - tt_um_mingkaic1_stack_machine
-          - tt_um_minipit_stevej
-          - tt_um_morningjava_top
+          - tt_um_dlmiles_tt05_i2c_bert
           - tt_um_multiplexed_clock
-          - tt_um_muncherkin_lioncage
-          - tt_um_mv_mult_alrdelcr
-          - tt_um_mvm
-          - tt_um_mvm_
-          - tt_um_myuart
-          - tt_um_nickjhay_processor
-          - tt_um_njzhu_uart
-          - tt_um_no_time_for_squares_tommythorn
-          - tt_um_perceptron
-          - tt_um_perceptron_connorguzi
-          - tt_um_perceptron_neuromeme
-          - tt_um_prg
-          - tt_um_proppy_bytebeat
-          - tt_um_psychogenic_neptuneproportional
-          - tt_um_psychogenic_shaman
-          - tt_um_rebel2_balanced_ternary_ALU
-          - tt_um_reflex_game
-          - tt_um_rejunity_ay8913
-          - tt_um_rejunity_rule110
-          - tt_um_rejunity_sn76489
-          - tt_um_rejunity_snn
-          - tt_um_retospect_neurochip
-          - tt_um_rgb_mixer
-          - tt_um_rjmorgan11_calculator_chip
-          - tt_um_rnn
-          - tt_um_rtfb_collatz
-          - tt_um_sap_1
-          - tt_um_seanvenadas
-          - tt_um_seven_segment_seconds
-          - tt_um_seven_segment_seconds_ksandov4
-          - tt_um_stdp
-          - tt_um_suhrojo
-          - tt_um_sunaofurukawa_cpu_8bit
-          - tt_um_supertails_tetris
-          - tt_um_synth_GyanepsaaS
-          - tt_um_thermocouple
-          - tt_um_tiny_game_of_life
-          - tt_um_tkmheart
-          - tt_um_toivoh_synth
-          - tt_um_tomkeddie_a
-          - tt_um_topLevel_derekabarca
-          - tt_um_topModuleKA
-          - tt_um_top_mole99
-          - tt_um_ttl74hc595_v2
-          - tt_um_uabc_electronica_2023
-          - tt_um_urish_ringosc_cnt
-          - tt_um_urish_silife
-          - tt_um_urish_silife_max
-          - tt_um_uwuifier
-          - tt_um_vga_clock
-          - tt_um_wokwi_376553022662786049
-          - tt_um_wokwi_377426511818305537
-          - tt_um_wokwi_378231665807713281
-          - tt_um_wokwi_379319062779062273
-          - tt_um_wokwi_379764885531576321
-          - tt_um_wokwi_379824923824476161
-          - tt_um_wokwi_379889284755158017
-          - tt_um_wokwi_380005495431181313
-          - tt_um_wokwi_380055891603379201
-          - tt_um_wokwi_380119282165535745
-          - tt_um_wokwi_380120751165092865
-          - tt_um_wokwi_380145600224164865
-          - tt_um_wokwi_380197591775930369
-          - tt_um_wokwi_380229599886002177
-          - tt_um_wokwi_380361576213660673
-          - tt_um_wokwi_380408396356749313
-          - tt_um_wokwi_380408409844584449
-          - tt_um_wokwi_380408455148316673
-          - tt_um_wokwi_380408486941145089
-          - tt_um_wokwi_380408594272345089
-          - tt_um_wokwi_380408774591779841
-          - tt_um_wokwi_380408784463076353
-          - tt_um_wokwi_380408823952452609
-          - tt_um_wokwi_380408936929183745
-          - tt_um_wokwi_380409019830656001
-          - tt_um_wokwi_380409081067502593
-          - tt_um_wokwi_380409086743445505
-          - tt_um_wokwi_380409169798008833
-          - tt_um_wokwi_380409393770716161
-          - tt_um_wokwi_380409481852161025
-          - tt_um_wokwi_380409488188706817
-          - tt_um_wokwi_380409528895479809
-          - tt_um_wokwi_380409532780455937
-          - tt_um_wokwi_380409568391147521
-          - tt_um_wokwi_380409904919056385
-          - tt_um_wokwi_380410498092232705
-          - tt_um_wokwi_380412382001715201
-          - tt_um_wokwi_380416099936681985
-          - tt_um_wokwi_380416361853146113
-          - tt_um_wokwi_380416616536542209
-          - tt_um_wokwi_380438365946734593
-          - tt_um_wokwi_380465686251921409
-          - tt_um_wokwi_380477805171811329
-          - tt_um_wokwi_380490286828784641
-          - tt_um_wrapper_inputblackboxoutput
-          - tt_um_wta
-          - tt_um_yubex_metastability_experiment          
     runs-on: ubuntu-latest
     env:
-      OPENLANE_TAG: 2023.11.23
-      OPENLANE_IMAGE_NAME: efabless/openlane:2023.11.23
+      OPENLANE_TAG: 2023.11.17
+      OPENLANE_IMAGE_NAME: efabless/openlane:2023.11.17
       OPENLANE_ROOT: /home/runner/openlane
       PDK_ROOT: /home/runner/pdk
       PDK: sky130A
@@ -200,6 +41,8 @@ jobs:
           git clone --depth=1 --branch $OPENLANE_TAG https://github.com/The-OpenROAD-Project/OpenLane.git $OPENLANE_ROOT
           cd $OPENLANE_ROOT
           make
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Make GDS with OpenLane
         working-directory: ${{ matrix.project }}
@@ -209,12 +52,44 @@ jobs:
           docker run --rm -v $OPENLANE_ROOT:/openlane \
               -v $PDK_ROOT:$PDK_ROOT -v $(pwd):/work -e PDK=$PDK -e PDK_ROOT=$PDK_ROOT \
               -u $(id -u $USER):$(id -g $USER) $OPENLANE_IMAGE_NAME \
-              /bin/bash -c "./flow.tcl -overwrite -design /work/src"
+              /bin/bash -c "./flow.tcl -overwrite -design /work/src -run_path /work/runs -tag wokwi"
+
+          if ! grep -q "\[SUCCESS\]: Flow complete." runs/wokwi/openlane.log; then
+            exit 1
+          fi
+
+          # Fail if issue_reproducible directory exists
+          if [ -d "runs/wokwi/issue_reproducible" ]; then
+            exit 1
+          fi
+
+      - name: Install klayout
+        run: |
+          wget https://www.klayout.org/downloads/Ubuntu-22/klayout_${KLAYOUT_VERSION}-1_amd64.deb
+          sudo apt-get install -y ./klayout_${KLAYOUT_VERSION}-1_amd64.deb
+        env:
+          KLAYOUT_VERSION: 0.28.12
+
+      - name: Run feol / beol / offgrid prechecks
+        working-directory: ${{ matrix.project }}
+        run: |
+          set -o pipefail
+          mkdir -p precheck
+          klayout -b -r ../tech-files/${PDK}_mr.drc -rd feol=true -rd input=$GDS -rd report=$(pwd)/precheck/feol_report.xml
+          python ../scripts/precheck_report.py --title FEOL --report precheck/feol_report.xml | tee -a $GITHUB_STEP_SUMMARY
+          klayout -b -r ../tech-files/${PDK}_mr.drc -rd beol=true -rd input=$GDS -rd report=$(pwd)/precheck/beol_report.xml
+          python ../scripts/precheck_report.py --title BEOL --report precheck/beol_report.xml | tee -a $GITHUB_STEP_SUMMARY
+          klayout -b -r ../tech-files/${PDK}_mr.drc -rd offgrid=true -rd input=$GDS -rd report=$(pwd)/precheck/offgrid_report.xml
+          python ../scripts/precheck_report.py --title offgrid --report precheck/offgrid_report.xml | tee -a $GITHUB_STEP_SUMMARY
+        env:
+          GDS: runs/wokwi/results/final/gds/${{ matrix.project }}.gds
+          PDK: sky130A
 
       - name: Publish build logs
         if: failure()
         uses: actions/upload-artifact@v3
         with:
-          name: GDS_logs
+          name: GDS_${{ matrix.project }}
           path: |
             ${{ matrix.project }}/runs/*
+            ${{ matrix.project }}/precheck/*
