@@ -57,3 +57,7 @@ set ::env(CLOCK_PORT) {clk}
 # don't use power rings or met5
 set ::env(DESIGN_IS_CORE) 0
 set ::env(RT_MAX_LAYER) {met4}
+
+# PL_TARGET_DENSITY - You can increase this if Global Placement fails with error GPL-0302.
+# Users have reported that values up to 0.8 worked well for them.
+set ::env(PL_TARGET_DENSITY) 0.62
