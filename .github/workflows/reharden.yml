@@ -1,0 +1,60 @@
+name: reharden
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  reharden:
+    strategy:
+      fail-fast: false
+      matrix:
+        project:
+          - tt_um_factory_test
+    runs-on: ubuntu-latest
+    env:
+      OPENLANE_TAG: 2023.09.11
+      OPENLANE_IMAGE_NAME: efabless/openlane:7e5a2e9fb274c0a100b4859a927adce7089455ff
+      OPENLANE_ROOT: /home/runner/openlane
+      PDK_ROOT: /home/runner/pdk
+      PDK: sky130A
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Checkout tt-support-tools repo
+        uses: actions/checkout@v4
+        with:
+          repository: tinytapeout/tt-support-tools
+          path: tt
+          ref: tt05
+
+      - name: Setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip' # caching pip dependencies
+
+      - name: Install OpenLane
+        run: |
+          git clone --depth=1 --branch $OPENLANE_TAG https://github.com/The-OpenROAD-Project/OpenLane.git $OPENLANE_ROOT
+          cd $OPENLANE_ROOT
+          make
+
+      - name: Make GDS with OpenLane
+        working-directory: ${{ matrix.project }}
+        run: |
+          mkdir -p tt/def
+          cp ../tt/def/*.def tt/def/
+          docker run --rm -v $OPENLANE_ROOT:/openlane \
+              -v $PDK_ROOT:$PDK_ROOT -v $(pwd):/work -e PDK=$PDK -e PDK_ROOT=$PDK_ROOT \
+              -u $(id -u $USER):$(id -g $USER) $OPENLANE_IMAGE_NAME \
+              /bin/bash -c "./flow.tcl -overwrite -design /work/src"
+
+      - name: Publish build logs
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: GDS_logs
+          path: |
+            ${{ matrix.project }}/runs/*
