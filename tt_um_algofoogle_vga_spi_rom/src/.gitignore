@@ -1,4 +1,0 @@
-# Files that might be generated while trying to convert VCDs to images:
-*.vcd.ps
-*.vcd.png
-*.vcd.pdf
