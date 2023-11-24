@@ -200,6 +200,8 @@ jobs:
           git clone --depth=1 --branch $OPENLANE_TAG https://github.com/The-OpenROAD-Project/OpenLane.git $OPENLANE_ROOT
           cd $OPENLANE_ROOT
           make
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Make GDS with OpenLane
         working-directory: ${{ matrix.project }}
@@ -209,12 +211,44 @@ jobs:
           docker run --rm -v $OPENLANE_ROOT:/openlane \
               -v $PDK_ROOT:$PDK_ROOT -v $(pwd):/work -e PDK=$PDK -e PDK_ROOT=$PDK_ROOT \
               -u $(id -u $USER):$(id -g $USER) $OPENLANE_IMAGE_NAME \
-              /bin/bash -c "./flow.tcl -overwrite -design /work/src"
+              /bin/bash -c "./flow.tcl -overwrite -design /work/src -run_path /work/runs -tag wokwi"
+
+          if ! grep -q "\[SUCCESS\]: Flow complete." runs/wokwi/openlane.log; then
+            exit 1
+          fi
+
+          # Fail if issue_reproducible directory exists
+          if [ -d "runs/wokwi/issue_reproducible" ]; then
+            exit 1
+          fi
+
+      - name: Install klayout
+        run: |
+          wget https://www.klayout.org/downloads/Ubuntu-22/klayout_${KLAYOUT_VERSION}-1_amd64.deb
+          sudo apt-get install -y ./klayout_${KLAYOUT_VERSION}-1_amd64.deb
+        env:
+          KLAYOUT_VERSION: 0.28.12
+
+      - name: Run feol / beol / offgrid prechecks
+        working-directory: ${{ matrix.project }}
+        run: |
+          set -o pipefail
+          mkdir -p precheck
+          klayout -b -r ../tech-files/${PDK}_mr.drc -rd feol=true -rd input=$GDS -rd report=$(pwd)/precheck/feol_report.xml
+          python ../scripts/precheck_report.py --title FEOL --report precheck/feol_report.xml | tee -a $GITHUB_STEP_SUMMARY
+          klayout -b -r ../tech-files/${PDK}_mr.drc -rd beol=true -rd input=$GDS -rd report=$(pwd)/precheck/beol_report.xml
+          python ../scripts/precheck_report.py --title BEOL --report precheck/beol_report.xml | tee -a $GITHUB_STEP_SUMMARY
+          klayout -b -r ../tech-files/${PDK}_mr.drc -rd offgrid=true -rd input=$GDS -rd report=$(pwd)/precheck/offgrid_report.xml
+          python ../scripts/precheck_report.py --title offgrid --report precheck/offgrid_report.xml | tee -a $GITHUB_STEP_SUMMARY
+        env:
+          GDS: runs/wokwi/results/final/gds/${{ matrix.project }}.gds
+          PDK: sky130A
 
       - name: Publish build logs
         if: failure()
         uses: actions/upload-artifact@v3
         with:
-          name: GDS_logs
+          name: GDS_${{ matrix.project }}
           path: |
             ${{ matrix.project }}/runs/*
+            ${{ matrix.project }}/precheck/*
