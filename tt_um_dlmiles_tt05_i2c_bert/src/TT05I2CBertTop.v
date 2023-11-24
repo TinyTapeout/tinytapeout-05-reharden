@@ -10,21 +10,6 @@ module TT05I2CBertTop (
   output reg [7:0]    uio_out /* verilator public */ ,
   input      [7:0]    uio_in /* verilator public */ ,
   output reg [7:0]    uio_oe /* verilator public */ ,
-  input               debug_SCL_ie /* verilator public */ ,
-  output              debug_SCL_od /* verilator public */ ,
-  output              debug_SCL_pp /* verilator public */ ,
-  output              debug_SCL_og /* verilator public */ ,
-  output              debug_SCL_pg /* verilator public */ ,
-  output              debug_SCL_os /* verilator public */ ,
-  output              debug_SCL_ps /* verilator public */ ,
-  input               debug_SDA_ie /* verilator public */ ,
-  output              debug_SDA_od /* verilator public */ ,
-  output              debug_SDA_pp /* verilator public */ ,
-  output              debug_SDA_og /* verilator public */ ,
-  output              debug_SDA_pg /* verilator public */ ,
-  output              debug_SDA_os /* verilator public */ ,
-  output              debug_SDA_ps /* verilator public */ ,
-  input               simulation_z /* verilator public */ ,
   input      [31:0]   latched /* verilator public */ ,
   input               rst_n,
   input               clk
@@ -66,12 +51,6 @@ module TT05I2CBertTop (
   wire       [7:0]    myState_1_io_led8;
   wire                powerOnSenseCaptured_Q;
   wire                powerOnSense_Q;
-  wire                _zz_debug_SCL_od;
-  wire                _zz_debug_SCL_od_1;
-  wire                _zz_debug_SCL_od_2;
-  wire                _zz_debug_SDA_od;
-  wire                _zz_debug_SDA_od_1;
-  wire                _zz_debug_SDA_od_2;
   wire                pushPullMode;
   wire       [2:0]    sclMode;
   wire       [11:0]   div12;
@@ -177,24 +156,6 @@ module TT05I2CBertTop (
     uio_oe[7] = 1'b1;
   end
 
-  assign _zz_debug_SCL_od = uio_out[2];
-  assign _zz_debug_SCL_od_1 = uio_oe[2];
-  assign _zz_debug_SCL_od_2 = uio_in[2];
-  assign debug_SCL_od = (_zz_debug_SCL_od_1 ? _zz_debug_SCL_od : ((debug_SCL_ie && (! _zz_debug_SCL_od_2)) ? _zz_debug_SCL_od_2 : simulation_z));
-  assign debug_SCL_og = ((_zz_debug_SCL_od_1 && _zz_debug_SCL_od) ? 1'b0 : ((debug_SCL_ie && _zz_debug_SCL_od_2) ? 1'b0 : ((_zz_debug_SCL_od_1 && (! _zz_debug_SCL_od)) ? 1'b1 : ((debug_SCL_ie && (! _zz_debug_SCL_od_2)) ? 1'b1 : 1'b1))));
-  assign debug_SCL_os = ((_zz_debug_SCL_od_1 && debug_SDA_ie) ? 1'bx : (_zz_debug_SCL_od_1 ? _zz_debug_SCL_od : (debug_SDA_ie ? _zz_debug_SCL_od_2 : 1'b1)));
-  assign debug_SCL_pp = (_zz_debug_SCL_od_1 ? _zz_debug_SCL_od : (debug_SCL_ie ? _zz_debug_SCL_od_2 : simulation_z));
-  assign debug_SCL_pg = ((_zz_debug_SCL_od_1 && debug_SCL_ie) ? 1'b0 : (_zz_debug_SCL_od_1 ? 1'b1 : (debug_SCL_ie ? 1'b1 : (((! debug_SCL_ie) && (! _zz_debug_SCL_od_2)) ? 1'b1 : 1'b1))));
-  assign debug_SCL_ps = ((_zz_debug_SCL_od_1 && debug_SCL_ie) ? 1'bx : (_zz_debug_SCL_od_1 ? _zz_debug_SCL_od : (debug_SCL_ie ? _zz_debug_SCL_od_2 : simulation_z)));
-  assign _zz_debug_SDA_od = uio_out[3];
-  assign _zz_debug_SDA_od_1 = uio_oe[3];
-  assign _zz_debug_SDA_od_2 = uio_in[3];
-  assign debug_SDA_od = (_zz_debug_SDA_od_1 ? _zz_debug_SDA_od : ((debug_SDA_ie && (! _zz_debug_SDA_od_2)) ? _zz_debug_SDA_od_2 : simulation_z));
-  assign debug_SDA_og = ((_zz_debug_SDA_od_1 && _zz_debug_SDA_od) ? 1'b0 : ((debug_SDA_ie && _zz_debug_SDA_od_2) ? 1'b0 : ((_zz_debug_SDA_od_1 && (! _zz_debug_SDA_od)) ? 1'b1 : ((debug_SDA_ie && (! _zz_debug_SDA_od_2)) ? 1'b1 : 1'b1))));
-  assign debug_SDA_os = ((_zz_debug_SDA_od_1 && debug_SDA_ie) ? 1'bx : (_zz_debug_SDA_od_1 ? _zz_debug_SDA_od : (debug_SDA_ie ? _zz_debug_SDA_od_2 : 1'b1)));
-  assign debug_SDA_pp = (_zz_debug_SDA_od_1 ? _zz_debug_SDA_od : (debug_SDA_ie ? _zz_debug_SDA_od_2 : simulation_z));
-  assign debug_SDA_pg = ((_zz_debug_SDA_od_1 && debug_SDA_ie) ? 1'b0 : (_zz_debug_SDA_od_1 ? 1'b1 : (debug_SDA_ie ? 1'b1 : (((! debug_SDA_ie) && (! _zz_debug_SDA_od_2)) ? 1'b1 : 1'b1))));
-  assign debug_SDA_ps = ((_zz_debug_SDA_od_1 && debug_SDA_ie) ? 1'bx : (_zz_debug_SDA_od_1 ? _zz_debug_SDA_od : (debug_SDA_ie ? _zz_debug_SDA_od_2 : simulation_z)));
   assign pushPullMode = latched[3];
   assign sclMode = latched[2 : 0];
   assign div12 = latched[15 : 4];
