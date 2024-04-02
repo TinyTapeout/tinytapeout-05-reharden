@@ -191,7 +191,7 @@ jobs:
           ref: tt05
 
       - name: Setup python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
@@ -225,6 +225,7 @@ jobs:
       - name: Install klayout
         run: |
           wget https://www.klayout.org/downloads/Ubuntu-22/klayout_${KLAYOUT_VERSION}-1_amd64.deb
+          sudo apt-get update
           sudo apt-get install -y ./klayout_${KLAYOUT_VERSION}-1_amd64.deb
         env:
           KLAYOUT_VERSION: 0.28.12
@@ -246,7 +247,7 @@ jobs:
 
       - name: Publish build logs
         if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: GDS_${{ matrix.project }}
           path: |
